@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/09 23:45:52 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:22:45 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,81 +91,75 @@ int node_count_add(t_ps *tab, t_list **stack)
 void stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 {
     t_list *closest_bigger;
-    t_list  *previous_closest_bigger;
     t_list *current;
+    int     position;
 
     tab->i = 0;
     tab->b = 0;
+    position = 1;
     closest_bigger = NULL;
     current = *stack_a;
     closest_bigger = malloc(sizeof(t_list));
-    previous_closest_bigger = malloc(sizeof(t_list));
     closest_bigger->index = INT_MAX;
-    previous_closest_bigger->index = INT_MAX;
     if (if_sorted(stack_a) == 1)
     {
-    push(stack_a, stack_b, 'b');
-    push(stack_a, stack_b, 'b');
-    stack_of_3(stack_a);
-    printing(*stack_a, *stack_b);
+        push(stack_a, stack_b, 'b');
+        push(stack_a, stack_b, 'b');
+        stack_of_3(stack_a);
+    }
     /*push(stack_b, stack_a, 'a');*/
-    /*printing(*stack_a, *stack_b);*/
-    while (*stack_b)
+    printing(*stack_a, *stack_b);
+    if (*stack_b)
     {
         current = *stack_a;
         tab->i = 0;
         tab->b = 0;
-        printing(*stack_a, *stack_b);
-        while ((current) != NULL)
+    }
+    while (current != NULL)
+    {
+        printf("(current)->index %d\n", (current)->index);
+        printf("closest_bigger->index %d\n", closest_bigger->index);
+        if ((current)->index > (*stack_b)->index)
         {
-            if ((current)->index > (*stack_b)->index)
-            {
-                closest_bigger->index = (current)->index;
-            }
-            tab->i++;
-            current = (current)->next;
+            if ((current)->index < closest_bigger->index)
+                closest_bigger->index = current->index;
         }
-        while (if_sorted(stack_a) == 1)
-            shift_up(stack_a, 'a');
-        if (closest_bigger->index == INT_MAX)
+        current = current->next;
+        tab->i++;
+    }
+printf("tab->i %d\n", tab->i);
+if (closest_bigger->index == INT_MAX)
+{
+    push(stack_b, stack_a, 'a');
+    printing(*stack_a, *stack_b);
+}
+else
+{
+    if (tab->i > (node_count_add(tab, stack_a))/2)
+    {
+        while (tab->b < (node_count_add(tab, stack_a) - tab->i + 1))
         {
-            push(stack_b, stack_a, 'a');
-            /*printing(*stack_a, *stack_b);*/
-        }
-        else
-        {
-            if (tab->i > (node_count_add(tab, stack_a))/2)
-            
-            {
-                while (tab->b < node_count_add(tab, stack_a) - tab->i + 1)
-                {
-                    shift_down(stack_a, 'a');
-                    printing(*stack_a, *stack_b);
-                    tab->b++;
-                }
-            }
-            else 
-                while (tab->b < node_count_add(tab, stack_a) - tab->i + 1)
-                {
-                    shift_up(stack_a, 'a');
-                    tab->b++;
-                }
-            push(stack_b, stack_a, 'a');
+            shift_down(stack_a, 'a');
+            printing(*stack_a, *stack_b);
+            tab->b++;
         }
     }
-    /*printing(*stack_a, *stack_b);*/
-    if (if_sorted(stack_a) == 1)
+    else 
+    {
+        while (tab->b < node_count_add(tab, stack_a) - tab->i + 1)
+        {
             shift_up(stack_a, 'a');
-    /*printing(*stack_a, *stack_b);*/
-    if (if_sorted(stack_a) == 1)
-            shift_up(stack_a, 'a');
-    /*printing(*stack_a, *stack_b);*/
+            tab->b++;
+        }
+    }
+    push(stack_b, stack_a, 'a');
+    printing(*stack_a, *stack_b);
+}
     
-    /*while ((*stack_a) != find_smallest_number(stack_a))
-        shift_up(stack_a, 'a');
-    }
-    printing(*stack_a, *stack_b);*/
-    }
+    if (if_sorted(stack_a) == 1)
+            shift_up(stack_a, 'a');
+    push(stack_b, stack_a, 'a');
+    printf("last print\n");
     printing(*stack_a, *stack_b);
 }
 
