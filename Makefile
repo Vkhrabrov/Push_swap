@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+         #
+#    By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:35:04 by vkhrabro          #+#    #+#              #
-#    Updated: 2023/06/05 18:54:19 by vkhrabro         ###   ########.fr        #
+#    Updated: 2023/06/18 13:45:38 by vadimhrabro      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 HEADER = push_swap.h
 #HEADER_B = pipex_bonus.h
 LIBS = libft/
-MAKE = make bonus
+MAKE = make
 
 SRC_F:= push_swap ps_utilities ps_commands ps_commands_2 algo
 
