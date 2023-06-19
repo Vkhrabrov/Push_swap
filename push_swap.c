@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/08 20:08:24 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/19 21:49:09 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	initialize_tab(t_ps *tab)
 	tab->i = 0;
 	tab->b = 0;
 	tab->k = 0;
+	tab->position = 0;
 }
 
 void	initialize_list(t_list **stack)

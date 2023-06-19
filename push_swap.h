@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/08 20:06:04 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/19 21:48:56 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_ps
 	int		i;
 	long	b;
 	int		k;
+	int		position;
 }	t_ps;
 
 int		error_msg(char *first, int ret);
