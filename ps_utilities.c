@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/09 21:27:18 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:27:58 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,6 @@ void	filling_stack_a(t_ps *tab, t_list **stack_a, int argc, char **argv)
 		tab->i++;
 	}
 }
-
-/*void testing_grounds(t_ps *tab, t_list *stack_a, t_list *stack_b)
-{
-	(void)tab;
-
-	push(&stack_a, &stack_b, 'b');
-	push(&stack_a, &stack_b, 'b');
-	push(&stack_a, &stack_b, 'b');
-	swap(&stack_a, 'a');
-	swap(&stack_b, 'b');
-	s_swap(&stack_a, &stack_b);
-	shift_up(&stack_a, 'a');
-	shift_up(&stack_b, 'b');
-	rr_shift_up(&stack_a, &stack_b);
-	rr_shift_down(&stack_a, &stack_b);
-	shift_down(&stack_a, 'a');
-	shift_down(&stack_b, 'b');
-}*/
 
 void printing(t_list *stack_a, t_list *stack_b)
 {
@@ -105,4 +87,45 @@ void	indexing(t_list **stack_a, int argc, t_ps *tab)
 		tab->i++;
 		current = *stack_a;
 	}
+}
+
+int	find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab)
+{
+	t_list	*closest_bigger;
+	t_list	*current;
+
+	closest_bigger = malloc(sizeof(t_list));
+	if (!closest_bigger)
+		exit(EXIT_FAILURE);
+	closest_bigger->index = INT_MAX;
+	current = *stack_a;
+	while (current != NULL)
+	{
+		if ((current)->index > (*stack_b)->index)
+		{
+			if ((current)->index < closest_bigger->index)
+			{
+				closest_bigger->index = current->index;
+				tab->position = tab->i;
+			}
+		}
+		current = current->next;
+		tab->i++;
+	}
+	free(closest_bigger);
+	return (tab->position);
+}
+
+int	if_sorted(t_list **stack_a)
+{
+	t_list	*storage;
+
+	storage = *stack_a;
+	while (storage && storage->next)
+	{
+		if (((storage)->content > storage->next->content))
+			return (1);
+		storage = (storage)->next;
+	}
+	return (0);
 }

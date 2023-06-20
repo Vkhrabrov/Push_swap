@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/19 21:48:56 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/20 22:08:35 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int		rr_shift_down(t_list **stack_a, t_list **stack_b);
 void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b);
 void	stack_of_3(t_list **stack_a);
 void	indexing(t_list **stack, int argc, t_ps *tab);
-
+int		find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab);
+int		if_sorted(t_list **stack_a);
+t_list	*find_biggest_number(t_list **stack_a);
+void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab);
 #endif

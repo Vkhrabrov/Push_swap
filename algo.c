@@ -6,41 +6,11 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/19 22:13:47 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/20 22:09:17 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*find_biggest_number(t_list **stack_a)
-{
-	t_list	*storage;
-	t_list	*biggest_number;
-
-	storage = *stack_a;
-	biggest_number = *stack_a;
-	while (storage && storage->next)
-	{
-		if ((biggest_number->index < storage->next->index))
-			biggest_number = storage->next;
-		storage = storage->next;
-	}
-	return (biggest_number);
-}
-
-int	if_sorted(t_list **stack_a)
-{
-	t_list	*storage;
-
-	storage = *stack_a;
-	while (storage && storage->next)
-	{
-		if (((storage)->content > storage->next->content))
-			return (1);
-		storage = (storage)->next;
-	}
-	return (0);
-}
 
 void	stack_of_3(t_list **stack_a)
 {
@@ -67,33 +37,6 @@ int	node_count_add(t_ps *tab, t_list **stack)
 		temp = temp->next;
 	}
 	return (tab->i);
-}
-
-int	find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab)
-{
-	t_list	*closest_bigger;
-	t_list	*current;
-
-	closest_bigger = malloc(sizeof(t_list));
-	if (!closest_bigger)
-		exit(EXIT_FAILURE);
-	closest_bigger->index = INT_MAX;
-	current = *stack_a;
-	while (current != NULL)
-	{
-		if ((current)->index > (*stack_b)->index)
-		{
-			if ((current)->index < closest_bigger->index)
-			{
-				closest_bigger->index = current->index;
-				tab->position = tab->i;
-			}
-		}
-		current = current->next;
-		tab->i++;
-	}
-	free(closest_bigger);
-	return (tab->position);
 }
 
 void	moves(t_list **stack_a, t_ps *tab)
@@ -166,8 +109,8 @@ void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b)
 	}
 	else if (tab->i > 3 && tab->i <= 5)
 		stack_of_5(stack_a, stack_b, tab);
-    /*else if (tab->i == 100)
-        stack_of_100(tab, stack_a, stack_b);
-    else
+    else if (tab->i == 100)
+        stack_of_100(stack_a, stack_b, tab);
+    /*else
         stack_of_100(tab, stack_a, stack_b);*/
 }
