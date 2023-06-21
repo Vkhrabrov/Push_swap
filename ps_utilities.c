@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/20 20:27:58 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/21 21:59:14 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,33 @@ void	indexing(t_list **stack_a, int argc, t_ps *tab)
 		tab->i++;
 		current = *stack_a;
 	}
+}
+
+int	find_closest_smaller(t_list **stack_a, t_list **stack_b, t_ps *tab, t_list element)
+{
+	t_list	*closest_smaller;
+	t_list	*current;
+
+	closest_smaller = malloc(sizeof(t_list));
+	if (!closest_smaller)
+		exit(EXIT_FAILURE);
+	closest_smaller->index = INT_MAX;
+	current = *stack_b;
+	while (current != NULL)
+	{
+		if (element->index < (*stack_b)->index)
+		{
+			if (element->index > closest_smaller->index)
+			{
+				closest_smaller->index = current->index;
+				tab->position = tab->i;
+			}
+		}
+		current = current->next;
+		tab->i++;
+	}
+	free(closest_smaller);
+	return (tab->position);
 }
 
 int	find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab)
