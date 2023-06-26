@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/20 22:09:17 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/25 22:39:25 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,10 @@ void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b)
 	}
 	*stack_a = temp;
 	if (tab->i <= 3)
-	{
-		printing(*stack_a, *stack_b);
 		stack_of_3(stack_a);
-		printing(*stack_a, *stack_b);
-	}
 	else if (tab->i > 3 && tab->i <= 5)
 		stack_of_5(stack_a, stack_b, tab);
-    else if (tab->i == 100)
+    else
         stack_of_100(stack_a, stack_b, tab);
     /*else
         stack_of_100(tab, stack_a, stack_b);*/

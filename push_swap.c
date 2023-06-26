@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/19 21:49:09 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:10:37 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ void	initialize_list(t_list **stack)
 {
 	*stack = NULL;
 }
+/*void initialize_indexes(t_list **stack_a)
+{
+    t_list *current = *stack_a;
+
+    while (current != NULL)
+    {
+        current->index = 0;
+		current->content = 0;
+		current->operations_a = 0;
+		current->operations_b = 0;
+		current->if_min_element = 0;
+        current = current->next;
+    }
+}*/
 
 int	error_msg(char *first, int ret)
 {
@@ -44,6 +58,9 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	// stack_a = NULL;
+	// stack_b = NULL;
+	// tab = NULL;
 	if (argc == 2)
 		exit(error_msg("Error", 1));
 	tab = (t_ps *)malloc(sizeof(t_ps));
@@ -55,10 +72,10 @@ int	main(int argc, char **argv)
 	initialize_list(&stack_a);
 	initialize_list(&stack_b);
 	filling_stack_a(tab, &stack_a, argc, argv);
+	// initialize_indexes(&stack_a);
 	indexing(&stack_a, argc, tab);
-	/*testing_grounds(tab, stack_a, stack_b);*/
+	printing(stack_a, stack_b);
 	node_count(tab, &stack_a, &stack_b);
-	/*printing(stack_a, stack_b);*/
 	return (0);
 }
 

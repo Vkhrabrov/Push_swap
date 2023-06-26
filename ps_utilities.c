@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/21 21:59:14 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:05:04 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	filling_stack_a(t_ps *tab, t_list **stack_a, int argc, char **argv)
 {
 	t_list	*new_argument;
 	int		value;
-
+	
 	tab->i = 1;
 	while (tab->i < argc)
 	{
@@ -89,7 +89,7 @@ void	indexing(t_list **stack_a, int argc, t_ps *tab)
 	}
 }
 
-int	find_closest_smaller(t_list **stack_a, t_list **stack_b, t_ps *tab, t_list element)
+int	find_closest_smaller(t_list **stack_b, t_ps *tab, int element)
 {
 	t_list	*closest_smaller;
 	t_list	*current;
@@ -97,13 +97,13 @@ int	find_closest_smaller(t_list **stack_a, t_list **stack_b, t_ps *tab, t_list e
 	closest_smaller = malloc(sizeof(t_list));
 	if (!closest_smaller)
 		exit(EXIT_FAILURE);
-	closest_smaller->index = INT_MAX;
+	closest_smaller->index = INT_MIN;
 	current = *stack_b;
 	while (current != NULL)
 	{
-		if (element->index < (*stack_b)->index)
+		if (element > (*stack_b)->index)
 		{
-			if (element->index > closest_smaller->index)
+			if (element > closest_smaller->index)
 			{
 				closest_smaller->index = current->index;
 				tab->position = tab->i;
@@ -112,8 +112,7 @@ int	find_closest_smaller(t_list **stack_a, t_list **stack_b, t_ps *tab, t_list e
 		current = current->next;
 		tab->i++;
 	}
-	free(closest_smaller);
-	return (tab->position);
+	return (closest_smaller->index);
 }
 
 int	find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab)

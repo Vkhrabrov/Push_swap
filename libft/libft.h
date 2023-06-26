@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:57:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/07 21:50:29 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:11:57 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct s_list
 {
 	int				content;
 	int				index;
+	int				operations_a;
+	int				operations_b;
+	int				if_min_element;
 	struct s_list	*next;
 }					t_list;
 t_list			*ft_lstnew(void *content);

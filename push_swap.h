@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/20 22:08:35 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:42:23 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ int		find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		if_sorted(t_list **stack_a);
 t_list	*find_biggest_number(t_list **stack_a);
 void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab);
+int		node_count_add(t_ps *tab, t_list **stack);
+int		find_closest_smaller(t_list **stack_b, t_ps *tab, int element);
 #endif
