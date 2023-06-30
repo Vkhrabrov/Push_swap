@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/23 20:42:23 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:58:07 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef struct s_ps
 	long	b;
 	int		k;
 	int		position;
+	int		direction_a;
+	int		direction_b;
+	int		operations_a;
+	int		operations_b;
 }	t_ps;
 
 int		error_msg(char *first, int ret);
@@ -57,4 +61,5 @@ t_list	*find_biggest_number(t_list **stack_a);
 void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		node_count_add(t_ps *tab, t_list **stack);
 int		find_closest_smaller(t_list **stack_b, t_ps *tab, int element);
+int		if_sorted_from_biggest_to_smallest(t_list **stack);
 #endif

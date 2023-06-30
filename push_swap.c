@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/25 23:10:37 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:58:31 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	initialize_tab(t_ps *tab)
 	tab->b = 0;
 	tab->k = 0;
 	tab->position = 0;
+	tab->direction_a = 0;
+	tab->direction_b = 0;
+	tab->operations_a = 0;
+	tab->operations_b = 0;
 }
 
 void	initialize_list(t_list **stack)
@@ -74,7 +78,7 @@ int	main(int argc, char **argv)
 	filling_stack_a(tab, &stack_a, argc, argv);
 	// initialize_indexes(&stack_a);
 	indexing(&stack_a, argc, tab);
-	printing(stack_a, stack_b);
+	// printing(stack_a, stack_b);
 	node_count(tab, &stack_a, &stack_b);
 	return (0);
 }

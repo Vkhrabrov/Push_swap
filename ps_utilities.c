@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/25 23:05:04 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/06/27 21:59:00 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int	find_closest_smaller(t_list **stack_b, t_ps *tab, int element)
 	current = *stack_b;
 	while (current != NULL)
 	{
-		if (element > (*stack_b)->index)
+		if (element > (current)->index)
 		{
-			if (element > closest_smaller->index)
+			if (current->index > closest_smaller->index)
 			{
 				closest_smaller->index = current->index;
 				tab->position = tab->i;
@@ -150,6 +150,20 @@ int	if_sorted(t_list **stack_a)
 	while (storage && storage->next)
 	{
 		if (((storage)->content > storage->next->content))
+			return (1);
+		storage = (storage)->next;
+	}
+	return (0);
+}
+
+int	if_sorted_from_biggest_to_smallest(t_list **stack)
+{
+	t_list	*storage;
+
+	storage = *stack;
+	while (storage && storage->next)
+	{
+		if (((storage)->index < storage->next->index))
 			return (1);
 		storage = (storage)->next;
 	}
