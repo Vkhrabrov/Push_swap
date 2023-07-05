@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/30 23:58:31 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:40:54 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	initialize_tab(t_ps *tab)
 	tab->position = 0;
 	tab->direction_a = 0;
 	tab->direction_b = 0;
+	tab->final_direction_a = 0;
+	tab->final_direction_b = 0;
 	tab->operations_a = 0;
 	tab->operations_b = 0;
 }

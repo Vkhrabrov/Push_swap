@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/25 22:39:25 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:06:24 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_of_3(t_list **stack_a)
+void	stack_of_3(t_list **stack_a, t_ps *tab)
 {
 	if (if_sorted(stack_a) == 1)
 	{
-		if (*stack_a == find_biggest_number(stack_a))
+		if (*stack_a == find_biggest_number(stack_a, tab))
 			shift_up(stack_a, 'a');
-		else if ((*stack_a)->next == find_biggest_number(stack_a))
+		else if ((*stack_a)->next == find_biggest_number(stack_a, tab))
 			shift_down(stack_a, 'a');
 		if (if_sorted(stack_a) == 1)
 			swap(stack_a, 'a');
@@ -65,7 +65,7 @@ void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 	{
 		push(stack_a, stack_b, 'b');
 		push(stack_a, stack_b, 'b');
-		stack_of_3(stack_a);
+		stack_of_3(stack_a, tab);
 	}
 	while (*stack_b)
 	{
@@ -102,7 +102,7 @@ void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b)
 	}
 	*stack_a = temp;
 	if (tab->i <= 3)
-		stack_of_3(stack_a);
+		stack_of_3(stack_a, tab);
 	else if (tab->i > 3 && tab->i <= 5)
 		stack_of_5(stack_a, stack_b, tab);
     else

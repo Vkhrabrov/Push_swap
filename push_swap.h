@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/30 23:58:07 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:05:26 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_ps
 	int		position;
 	int		direction_a;
 	int		direction_b;
+	int		final_direction_a;
+	int		final_direction_b;
 	int		operations_a;
 	int		operations_b;
 }	t_ps;
@@ -53,11 +55,11 @@ int		rr_shift_up(t_list **stack_a, t_list **stack_b);
 void	printing(t_list *stack_a, t_list *stack_b);
 int		rr_shift_down(t_list **stack_a, t_list **stack_b);
 void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b);
-void	stack_of_3(t_list **stack_a);
+void	stack_of_3(t_list **stack_a, t_ps *tab);
 void	indexing(t_list **stack, int argc, t_ps *tab);
 int		find_closest_bigger(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		if_sorted(t_list **stack_a);
-t_list	*find_biggest_number(t_list **stack_a);
+t_list	*find_biggest_number(t_list **stack_a, t_ps *tab);
 void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		node_count_add(t_ps *tab, t_list **stack);
 int		find_closest_smaller(t_list **stack_b, t_ps *tab, int element);
