@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/06 20:07:35 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:58:39 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,15 @@ void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 			shift_up(stack_a, 'a');
 		}
 		else
+		{
 			moves(stack_a, tab);
-		push(stack_b, stack_a, 'a');
+			push(stack_b, stack_a, 'a');
+		}
 	}
+	//printing(*stack_a, *stack_b);
 	while (if_sorted(stack_a) == 1)
 		shift_up(stack_a, 'a');
+	//printing(*stack_a, *stack_b);
 }
 
 void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b)
