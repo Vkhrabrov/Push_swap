@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/05 23:06:24 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/06 20:07:35 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,18 @@ void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 {
 	if (if_sorted(stack_a) == 1)
 	{
-		push(stack_a, stack_b, 'b');
-		push(stack_a, stack_b, 'b');
-		stack_of_3(stack_a, tab);
+		if (node_count_add(tab, stack_a) == 4)
+		{	
+			//push(stack_a, stack_b, 'b');
+			push(stack_a, stack_b, 'b');
+			stack_of_3(stack_a, tab);
+		}
+		else 
+		{
+			push(stack_a, stack_b, 'b');
+			push(stack_a, stack_b, 'b');
+			stack_of_3(stack_a, tab);
+		}
 	}
 	while (*stack_b)
 	{
