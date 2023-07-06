@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:14:36 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/27 23:01:23 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/06 21:46:49 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	shift_up(t_list **stack, char c)
 
 int	rr_shift_up(t_list **stack_a, t_list **stack_b)
 {
-	write(1, "rr\n", 4);
+	write(1, "rr\n", 3);
 	if (*stack_a && *stack_b)
 	{
 		shift_up(stack_a, 'c');
