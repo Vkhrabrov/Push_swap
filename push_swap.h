@@ -6,7 +6,7 @@
 /*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/05 23:05:26 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/09 17:39:20 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ typedef struct s_ps
 	int		final_direction_b;
 	int		operations_a;
 	int		operations_b;
+	int		operations_a_add;
+	int		operations_b_add;
+	int 	min_operations;
+	int		total_operations;
+	int		biggest;
 }	t_ps;
 
 int		error_msg(char *first, int ret);

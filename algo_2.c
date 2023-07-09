@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 21:31:39 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/06 21:33:27 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:15:00 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int distance_from_top(t_list **stack, t_ps *tab)
     return distance;
 }
 
-int distance_from_bottom(t_list **stack, int target_index) 
+int distance_from_bottom(t_list **stack, int element) 
 {
     int distance = 0;
     t_list *current = *stack;
-    while (current != NULL && current->index != target_index)
+    while (current != NULL && current->index != element)
         current = current->next;
     while (current != NULL) 
     {
@@ -43,27 +43,35 @@ int distance_from_bottom(t_list **stack, int target_index)
 
 int distance_to_biggest(t_list **stack, t_ps *tab) {
     int biggest = find_biggest_number(stack, tab)->index;
-    //printf("biggest: %d\n", biggest);
     int top_distance = distance_from_top(stack, tab);
-    //printf("top_distance: %d\n", top_distance);
     int bottom_distance = distance_from_bottom(stack, biggest);
-    //printf("bottom_distance: %d\n", bottom_distance);
     if (top_distance < bottom_distance)
     {
-        //printf("I was here (top distance sent)\n");
         tab->direction_b = 1;
         return top_distance;
     }
     else
     {
-        //printf("I was here (bottom distance sent)\n");
         tab->direction_b = 0;
         return bottom_distance;
     }
 }
 
+int find_inser_position_add(int distance_from_top, int dist_from_bottom, t_ps *tab)
+{
+    if (distance_from_top < dist_from_bottom)
+    {
+        tab->direction_b = 1;
+		return (distance_from_top);
+    }
+	else
+    {
+        tab->direction_b = 0;
+		return (dist_from_bottom);
+    }
+}
 
-int find_insert_position(t_list **stack, int element, t_ps *tab) 
+int find_insert_position(t_list **stack, t_ps *tab, int element) 
 {
     int     distance_from_top;
     t_list  *current;
@@ -74,7 +82,6 @@ int find_insert_position(t_list **stack, int element, t_ps *tab)
     dist_from_bottom = 0;
     current = *stack;
     closest_smaller = find_closest_smaller(&current, tab, element);
-    //printf("closest_smaller: %d\n", closest_smaller);
     if (current == NULL) 
         return distance_from_top;
     while (current != NULL && current->index != closest_smaller) 
@@ -84,25 +91,12 @@ int find_insert_position(t_list **stack, int element, t_ps *tab)
         distance_from_top++;
         current = current->next;
     }
-    //printf("distance_from_top: %d\n", distance_from_top);
     if (dist_from_bottom == 0)
         dist_from_bottom = node_count_add(tab, stack) - distance_from_top;
-    //printf("dist_from_bottom: %d\n", dist_from_bottom);
-    if (distance_from_top < dist_from_bottom)
-    {
-        tab->direction_b = 1;
-		return (distance_from_top);
-    }
-	else
-    {
-        tab->direction_b = 0;
-		return (dist_from_bottom);
-        // remember to put what happens if they are equal;
-    }
+    return (find_inser_position_add (distance_from_top, dist_from_bottom, tab));
 }
 
-
-int	ft_find_shortest_distance(t_list **stack, int element, t_ps *tab)
+int	ft_find_shortest_distance(t_list **stack, t_ps *tab, int element)
 {
 	int distance_from_top;
 	int dist_from_bottom;
@@ -131,32 +125,8 @@ int	ft_find_shortest_distance(t_list **stack, int element, t_ps *tab)
     }
 }
 
-void    moves_2(t_list **stack_a, t_list **stack_b, t_ps *tab)
+void    moves_2_add(t_list **stack_a, t_list **stack_b, t_ps *tab)
 {
-        /*t_list *current_a;
-        t_list *current_b;
-
-        current_a = *stack_a;
-        current_b = *stack_b; */
-        if (tab->final_direction_a == tab->final_direction_b && tab->final_direction_a == 1)
-        {
-            while (tab->operations_a != 0 && tab->operations_b != 0)
-		    {
-			    rr_shift_up(stack_a, stack_b);
-                tab->operations_a--;
-                tab->operations_b--;
-		    }
-        }
-        while (tab->final_direction_a == 1 && tab->operations_a != 0)
-        {
-            shift_up(stack_a, 'a');
-            tab->operations_a--;
-        }
-        while (tab->final_direction_b == 1 && tab->operations_b != 0)
-        {
-            shift_up(stack_b, 'b');
-            tab->operations_b--;
-        }
         if (tab->final_direction_a == tab->final_direction_b && tab->final_direction_a == 0)
         {
             while (tab->operations_a != 0 && tab->operations_b != 0)
@@ -176,75 +146,56 @@ void    moves_2(t_list **stack_a, t_list **stack_b, t_ps *tab)
             shift_down(stack_b, 'b');
             tab->operations_b--;
         } 
-    //printf("Printing after moves\n");
-    //printing(*stack_a, *stack_b);
 }
 
-void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab)
+void    moves_2(t_list **stack_a, t_list **stack_b, t_ps *tab)
 {
-    t_list *current;
-    int min_operations;
-    //int min_element;
-    int element;
-    int operations_a;
-    int operations_b;
-    int total_operations;
-    
-    push(stack_a, stack_b, 'b');
-	push(stack_a, stack_b, 'b');
-    //printing(*stack_a, *stack_b);
-    current = *stack_a;
-    operations_a = 0;
-    operations_b = 0;
-    total_operations = 0;
-
-    while (node_count_add(tab, stack_a) > 0)
-    {
-        min_operations = INT_MAX;
-        while(current) 
+        if (tab->final_direction_a == tab->final_direction_b && tab->final_direction_a == 1)
         {
-            element = current->index;
-            
-            operations_a = ft_find_shortest_distance(stack_a, element, tab);
-            operations_b = find_insert_position(stack_b, element, tab);
-            //printf("%d\n", element);
-            //printf("operations_a %d\n", operations_a);
-            //printf("direction_a %d\n", tab->direction_a);
-            //printf("operations_b %d\n", operations_b);
-            //printf("direction_b %d\n", tab->direction_b);
-            //printf("\n");
-            if (tab->direction_a == tab->direction_b)
+            while (tab->operations_a != 0 && tab->operations_b != 0)
+		    {
+			    rr_shift_up(stack_a, stack_b);
+                tab->operations_a--;
+                tab->operations_b--;
+		    }
+        }
+        while (tab->final_direction_a == 1 && tab->operations_a != 0)
+        {
+            shift_up(stack_a, 'a');
+            tab->operations_a--;
+        }
+        while (tab->final_direction_b == 1 && tab->operations_b != 0)
+        {
+            shift_up(stack_b, 'b');
+            tab->operations_b--;
+        }
+        moves_2_add(stack_a, stack_b, tab);
+}
+
+void minimal_element_calculations(t_ps *tab)
+{
+    if (tab->direction_a == tab->direction_b)
             {
-                if (operations_a >= operations_b)
-                    total_operations = operations_a;
+                if (tab->operations_a_add >= tab->operations_b_add)
+                    tab->total_operations = tab->operations_a_add;
                 else 
-                    total_operations = operations_b;
+                    tab->total_operations = tab->operations_b_add;
             }
             else
-                total_operations = operations_a + operations_b;
-            if(total_operations < min_operations) 
+                tab->total_operations = tab->operations_a_add + tab->operations_b_add;
+            if(tab->total_operations < tab->min_operations) 
             {
-                min_operations = total_operations;
-                //min_element = element;
-                current->if_min_element = 1;
-                tab->operations_a = operations_a;
-                tab->operations_b = operations_b;
+                tab->min_operations = tab->total_operations;
+                tab->operations_a = tab->operations_a_add;
+                tab->operations_b = tab->operations_b_add;
                 tab->final_direction_a = tab->direction_a;
                 tab->final_direction_b = tab->direction_b;
             }
-            current = current->next;
-        }
-        //printf("Minimal cost element: %d\n", min_element);
-        //printf("\n");
-        moves_2(stack_a, stack_b, tab);
-        push(stack_a, stack_b, 'b');
-        //printing(*stack_a, *stack_b);
-        current = *stack_a;
-    }
-    //stack_of_3(stack_a);
-    //printf("tab_position: %d\n", tab->position);
+}
+
+void end_of_function_100(t_list **stack_a, t_list **stack_b, t_ps *tab)
+{
     find_biggest_number(stack_b, tab);
-    //printf("tab_position_2: %d\n", tab->position);
     while (if_sorted_from_biggest_to_smallest(stack_b) == 1)
     {
         if (tab->position < node_count_add(tab, stack_b) / 2)
@@ -252,10 +203,34 @@ void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab)
         else
             shift_down(stack_b, 'b');
     }
-    //printing(*stack_a, *stack_b);
     while (*stack_b != NULL)
         push(stack_b, stack_a, 'a');
-    //printf("Minimal cost element: %d\n", min_element);
-    //to see what can be doe with moves function, why it doesn't work and also check if anything else has to be add to the struckt to reflect the direction of the further movements.
-    //printing(*stack_a, *stack_b);
+}
+
+void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab)
+{
+    t_list *current;
+    
+    push(stack_a, stack_b, 'b');
+	push(stack_a, stack_b, 'b');
+    current = *stack_a;
+    int element;
+
+    element = 0;
+    while (node_count_add(tab, stack_a) > 0)
+    {
+        tab->min_operations = INT_MAX;
+        while(current) 
+        {
+            element = current->index;
+            tab->operations_a_add = ft_find_shortest_distance(stack_a, tab, element);
+            tab->operations_b_add = find_insert_position(stack_b, tab, element);
+            minimal_element_calculations(tab);
+            current = current->next;
+        }
+        moves_2(stack_a, stack_b, tab);
+        push(stack_a, stack_b, 'b');
+        current = *stack_a;
+    }
+    end_of_function_100(stack_a, stack_b, tab);
 }

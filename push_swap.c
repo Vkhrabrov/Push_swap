@@ -6,7 +6,7 @@
 /*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/05 22:40:54 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/09 17:38:09 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	initialize_tab(t_ps *tab)
 	tab->final_direction_b = 0;
 	tab->operations_a = 0;
 	tab->operations_b = 0;
+	tab->operations_a_add = 0;
+	tab->operations_b_add = 0;
+	tab->min_operations = 0;
+	tab->total_operations = 0;
 }
 
 void	initialize_list(t_list **stack)

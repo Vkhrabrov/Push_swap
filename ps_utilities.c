@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utilities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/27 21:59:00 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:39:00 by vadimhrabro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
