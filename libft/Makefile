@@ -6,7 +6,7 @@
 #    By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 19:57:42 by vkhrabro          #+#    #+#              #
-#    Updated: 2023/05/31 17:45:40 by vkhrabro         ###   ########.fr        #
+#    Updated: 2023/07/11 00:30:45 by vkhrabro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,12 @@ OBJS_BNS = $(SRC_BNS:.c=.o)
 CC = gcc
 
 %.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(OBJS_BNS) $(HEADER)
-	ar -rcs $(NAME) $(OBJS) $(OBJS_BNS)
+	@ar -rcs $(NAME) $(OBJS) $(OBJS_BNS)
 	@touch $@
 
 clean:

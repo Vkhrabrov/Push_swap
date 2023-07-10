@@ -6,11 +6,11 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:51:01 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/05/30 20:03:05 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:47:22 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 long	ft_atoi(const char *str)
 {
@@ -35,7 +35,7 @@ long	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		i = (i * 10) + (*str - '0');
-	str++;
+		str++;
 	}
 	return (i * j);
 }

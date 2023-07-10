@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 23:14:19 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/06/02 21:48:08 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:56:27 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(int), void (*del)(int))
 		temp = f(lst->content);
 		b = ft_lstnew(temp);
 		if (!b)
-		{	
+		{
 			ft_lstclear(&a, del);
 			free(temp);
 			return (NULL);

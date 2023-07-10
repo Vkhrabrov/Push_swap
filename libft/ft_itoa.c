@@ -6,11 +6,11 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:49:51 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/04/02 01:20:38 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:55:27 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_string(char *str, int i, int sign, int n)
@@ -38,7 +38,7 @@ int	ft_size(int n)
 		n = n / 10;
 	}
 	return (i);
-}	
+}
 
 char	*ft_itoa(int n)
 {

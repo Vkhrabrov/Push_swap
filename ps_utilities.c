@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utilities.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:24:42 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/09 17:39:00 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/10 23:38:57 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,78 +14,23 @@
 
 void	filling_stack_a(t_ps *tab, t_list **stack_a, int argc, char **argv)
 {
-	t_list	*new_argument;
 	int		value;
-	
+	t_list	*new_argument;
+
 	tab->i = 1;
 	while (tab->i < argc)
 	{
 		value = ft_atoi(argv[tab->i]);
 		new_argument = (t_list *)malloc(sizeof(t_list));
 		if (!new_argument)
+		{
+			free(tab);
 			exit(error_msg("Error", 1));
+		}
 		new_argument->content = value;
 		new_argument->next = NULL;
 		ft_lstadd_back(stack_a, new_argument);
 		tab->i++;
-	}
-}
-
-void printing(t_list *stack_a, t_list *stack_b)
-{
-	write(1, "\n", 1);
-	t_list *temp_a = stack_a;
-    t_list *temp_b = stack_b;
-	if (temp_a != NULL && temp_b != NULL)
-	{
-    	while (temp_a != NULL && temp_b != NULL)
-    	{
-        	printf("stack a index: %i   stack b index: %i\n", temp_a->index, temp_b->index);
-        	temp_a = temp_a->next;
-        	temp_b = temp_b->next;
-    	}
-	}
-	if (temp_b == NULL)
-	{
-		while (temp_a != NULL)
-		{
-			printf("stack a index: %i\n", temp_a->index);
-			temp_a = temp_a->next;
-		}
-	}
-	if (temp_a == NULL)
-	{
-		while (temp_b != NULL)
-		{
-			printf("\t\t   stack b index: %i\n", temp_b->index);
-			temp_b = temp_b->next;
-		}
-	}
-}
-
-void	indexing(t_list **stack_a, int argc, t_ps *tab)
-{
-	t_list *current;
-	t_list *min_node;
-	int min;
-
-	current = *stack_a;
-	tab->i = 1;
-	while (tab->i <= argc - 1)
-	{
-		min = INT_MAX;
-		while(current)
-		{
-			if (current->content < min && current->index == 0)
-			{
-				min = current->content;
-				min_node = current;
-			}
-			current = current->next;
-		}
-		min_node->index = tab->i;
-		tab->i++;
-		current = *stack_a;
 	}
 }
 
@@ -96,7 +41,10 @@ int	find_closest_smaller(t_list **stack_b, t_ps *tab, int element)
 
 	closest_smaller = malloc(sizeof(t_list));
 	if (!closest_smaller)
-		exit(EXIT_FAILURE);
+	{
+		free(tab);
+		exit(error_msg("Error", 1));
+	}
 	closest_smaller->index = INT_MIN;
 	current = *stack_b;
 	while (current != NULL)

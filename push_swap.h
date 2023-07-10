@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/09 17:39:20 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/10 23:02:11 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_ps
 	int		operations_b;
 	int		operations_a_add;
 	int		operations_b_add;
-	int 	min_operations;
+	int		min_operations;
 	int		total_operations;
 	int		biggest;
 }	t_ps;
@@ -68,5 +68,13 @@ t_list	*find_biggest_number(t_list **stack_a, t_ps *tab);
 void	stack_of_100(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		node_count_add(t_ps *tab, t_list **stack);
 int		find_closest_smaller(t_list **stack_b, t_ps *tab, int element);
+int		sorted_from_biggest_to_smallest(t_list **stack);
+void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab);
+int		distance_from_top(t_list **stack, t_ps *tab);
+int		distance_from_bottom(t_list **stack, int element);
+int		distance_to_biggest(t_list **stack, t_ps *tab);
 int		if_sorted_from_biggest_to_smallest(t_list **stack);
+void	moves_2(t_list **stack_a, t_list **stack_b, t_ps *tab);
+int		find_shortest_dist(t_list **stack, t_ps *tab, int element);
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utilities_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:28:25 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/05 23:14:24 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/10 22:58:19 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,59 @@ t_list	*find_biggest_number(t_list **stack_a, t_ps *tab)
 		storage = storage->next;
 	}
 	return (biggest_number);
+}
+
+int	distance_from_top(t_list **stack, t_ps *tab)
+{
+	int		distance;
+	int		biggest;
+	t_list	*current;
+
+	distance = 0;
+	current = *stack;
+	biggest = find_biggest_number(stack, tab)->index;
+	while (current != NULL && current->index != biggest)
+	{
+		distance++;
+		current = current->next;
+	}
+	return (distance);
+}
+
+int	distance_from_bottom(t_list **stack, int element)
+{
+	int		distance;
+	t_list	*current;
+
+	distance = 0;
+	current = *stack;
+	while (current != NULL && current->index != element)
+		current = current->next;
+	while (current != NULL)
+	{
+		distance++;
+		current = current->next;
+	}
+	return (distance);
+}
+
+int	distance_to_biggest(t_list **stack, t_ps *tab)
+{
+	int	biggest;
+	int	top_distance;
+	int	bottom_distance;
+
+	biggest = find_biggest_number(stack, tab)->index;
+	top_distance = distance_from_top(stack, tab);
+	bottom_distance = distance_from_bottom(stack, biggest);
+	if (top_distance < bottom_distance)
+	{
+		tab->direction_b = 1;
+		return (top_distance);
+	}
+	else
+	{
+		tab->direction_b = 0;
+		return (bottom_distance);
+	}
 }

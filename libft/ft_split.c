@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 22:19:16 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/02/09 18:15:45 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:49:41 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 #include<stdlib.h>
 
 char	**ft_split(char const *s, char c);

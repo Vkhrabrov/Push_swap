@@ -6,11 +6,37 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/06 20:58:39 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:09:06 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	indexing(t_list **stack_a, int argc, t_ps *tab)
+{
+	t_list	*current;
+	t_list	*min_node;
+	int		min;
+
+	current = *stack_a;
+	tab->i = 1;
+	while (tab->i <= argc - 1)
+	{
+		min = INT_MAX;
+		while (current)
+		{
+			if (current->content < min && current->index == 0)
+			{
+				min = current->content;
+				min_node = current;
+			}
+			current = current->next;
+		}
+		min_node->index = tab->i;
+		tab->i++;
+		current = *stack_a;
+	}
+}
 
 void	stack_of_3(t_list **stack_a, t_ps *tab)
 {
@@ -23,20 +49,6 @@ void	stack_of_3(t_list **stack_a, t_ps *tab)
 		if (if_sorted(stack_a) == 1)
 			swap(stack_a, 'a');
 	}
-}
-
-int	node_count_add(t_ps *tab, t_list **stack)
-{
-	t_list	*temp;
-
-	temp = *stack;
-	tab->i = 0;
-	while (temp != NULL)
-	{
-		tab->i++;
-		temp = temp->next;
-	}
-	return (tab->i);
 }
 
 void	moves(t_list **stack_a, t_ps *tab)
@@ -59,13 +71,12 @@ void	moves(t_list **stack_a, t_ps *tab)
 	}
 }
 
-void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
+void	stack_of_5_add(t_list **stack_a, t_list **stack_b, t_ps *tab)
 {
 	if (if_sorted(stack_a) == 1)
 	{
 		if (node_count_add(tab, stack_a) == 4)
-		{	
-			//push(stack_a, stack_b, 'b');
+		{
 			push(stack_a, stack_b, 'b');
 			stack_of_3(stack_a, tab);
 		}
@@ -76,6 +87,11 @@ void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 			stack_of_3(stack_a, tab);
 		}
 	}
+}
+
+void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
+{
+	stack_of_5_add(stack_a, stack_b, tab);
 	while (*stack_b)
 	{
 		tab->i = 0;
@@ -95,31 +111,6 @@ void	stack_of_5(t_list **stack_a, t_list **stack_b, t_ps *tab)
 			push(stack_b, stack_a, 'a');
 		}
 	}
-	//printing(*stack_a, *stack_b);
 	while (if_sorted(stack_a) == 1)
 		shift_up(stack_a, 'a');
-	//printing(*stack_a, *stack_b);
-}
-
-void	node_count(t_ps *tab, t_list **stack_a, t_list **stack_b)
-{
-	t_list	*temp;
-
-	(void)stack_b;
-	tab->i = 0;
-	temp = *stack_a;
-	while (*stack_a != NULL)
-	{
-		tab->i++;
-		*stack_a = (*stack_a)->next;
-	}
-	*stack_a = temp;
-	if (tab->i <= 3)
-		stack_of_3(stack_a, tab);
-	else if (tab->i > 3 && tab->i <= 5)
-		stack_of_5(stack_a, stack_b, tab);
-    else
-        stack_of_100(stack_a, stack_b, tab);
-    /*else
-        stack_of_100(tab, stack_a, stack_b);*/
 }

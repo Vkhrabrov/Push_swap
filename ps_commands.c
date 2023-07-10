@@ -6,32 +6,32 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:14:36 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/06 21:46:49 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/10 22:44:28 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int swap(t_list **stack, char c)
+int	swap(t_list **stack, char c)
 {
-    t_list *first;
-    t_list *second;
+	t_list	*first;
+	t_list	*second;
 
-    if (c == 'a')
-        write(1, "sa\n", 3);
-    else if (c == 'b')
-        write(1, "sb\n", 3);
-    if (*stack && (*stack)->next)
-    {
-        first = *stack;
-        second = first->next;
-        first->next = second->next;
-        second->next = first;
-        *stack = second;
-    }
-    else
-        return (1);
-    return (0);
+	if (c == 'a')
+		write(1, "sa\n", 3);
+	else if (c == 'b')
+		write(1, "sb\n", 3);
+	if (*stack && (*stack)->next)
+	{
+		first = *stack;
+		second = first->next;
+		first->next = second->next;
+		second->next = first;
+		*stack = second;
+	}
+	else
+		return (1);
+	return (0);
 }
 
 int	s_swap(t_list **stack_a, t_list **stack_b)

@@ -6,51 +6,49 @@
 #    By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:35:04 by vkhrabro          #+#    #+#              #
-#    Updated: 2023/06/20 22:09:48 by vkhrabro         ###   ########.fr        #
+#    Updated: 2023/07/11 00:28:06 by vkhrabro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 HEADER = push_swap.h
-#HEADER_B = pipex_bonus.h
 LIBS = libft/
 MAKE = make
 
-SRC_F:= push_swap ps_utilities ps_utilities_2 ps_commands ps_commands_2 algo algo_2
+SRC_F:= push_swap ps_utilities ps_utilities_2 ps_utilities_3 ps_commands ps_commands_2 algo algo_2 
 
-#SRC_BNS_F:= pipex_bonus pipex_utils_bonus pipex_utils_2_bonus pipex_utils_3_bonus get_next_line/get_next_line get_next_line/get_next_line_utils
-
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -MMD
 RM = rm -f
 SRC = $(addsuffix .c, $(SRC_F))
 OBJS = $(SRC:.c=.o)
-#SRC_BNS = $(addsuffix .c, $(SRC_BNS_F))
-#OBJS_BNS = $(SRC_BNS:.c=.o)
+DEPS = $(OBJS:.o=.d)
 
 CC = gcc
 
-%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c 
+	@$(CC) $(FLAGS) -c $< -o $@
 
-all: 	make_libs $(NAME)
+all: make_libs $(NAME)
+	@echo "\033[1;32mThe project has been compiled successfully\033[0m"
 
 make_libs:
-	$(MAKE) -C $(LIBS)
+	@$(MAKE) -C $(LIBS)
+	@echo "\033[1;32mLibraries have been compiled successfully\033[0m"
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CC) $(FLAGS) -L$(LIBS) -lft -o $@ $(OBJS)
-
-#bonus: make_libs $(OBJS_BNS) $(HEADER_B)
-#	$(CC) $(FLAGS) -L$(LIBS) -lft -o $(NAME) $(OBJS_BNS)
+	@$(CC) $(FLAGS) -L$(LIBS) -lft -o $@ $(OBJS)
 
 clean:
-	$(RM) $(OBJS) 
-	$(MAKE) -C $(LIBS) clean
+	@$(RM) $(OBJS) $(DEPS)
+	@$(MAKE) -C $(LIBS) clean
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -C $(LIBS) fclean
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBS) fclean
 
 re: fclean all
 
 .PHONY: re clean fclean all
+
+-include $(DEPS)
+
