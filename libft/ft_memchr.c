@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:50:45 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/01/27 21:44:35 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:51:49 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stddef.h>
+#include <stddef.h>
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {

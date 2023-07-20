@@ -6,11 +6,11 @@
 /*   By: vkhrabro <vkhrabro@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:37:46 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/01/26 20:24:00 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:50:02 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include <stdio.h>
 
 int	ft_isdigit(int c)
 {

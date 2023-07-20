@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vadimhrabrov <vadimhrabrov@student.42.f    +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:57:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/09 16:59:14 by vadimhrabro      ###   ########.fr       */
+/*   Updated: 2023/07/21 00:53:19 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include<stddef.h>
+# include <stddef.h>
 
 int				ft_putchar(char c);
 int				ft_isalpha(int c);

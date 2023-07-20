@@ -6,11 +6,11 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 19:06:13 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/03/29 21:29:59 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:53:32 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stddef.h>
+#include <stddef.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

@@ -6,12 +6,12 @@
 /*   By: vkhrabro <vkhrabro@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:54:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/02/11 21:35:09 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:51:01 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<stdio.h>
+#include <stdio.h>
 
 int	ft_lstsize(t_list *lst)
 {

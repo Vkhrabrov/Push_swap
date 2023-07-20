@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:13:40 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/10 23:02:11 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:48:42 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_ps
 	int		i;
 	long	b;
 	int		k;
+	int		t;
 	int		position;
 	int		direction_a;
 	int		direction_b;
@@ -76,5 +77,11 @@ int		distance_to_biggest(t_list **stack, t_ps *tab);
 int		if_sorted_from_biggest_to_smallest(t_list **stack);
 void	moves_2(t_list **stack_a, t_list **stack_b, t_ps *tab);
 int		find_shortest_dist(t_list **stack, t_ps *tab, int element);
+void	free_list(t_list *head);
+void	free_array(char **array, t_ps *tab);
+void	safe_exit(t_ps *tab);
+void	process_input(t_ps *tab, int *argc, char ***argv, char **argv_add);
+void	check_input(t_ps *tab, int argc, char **argv, int i);
+void	changing_tabs(t_ps *tab, int *argc);
 
 #endif

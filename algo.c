@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:45:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/10 23:09:06 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:45:12 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	indexing(t_list **stack_a, int argc, t_ps *tab)
 	int		min;
 
 	current = *stack_a;
-	tab->i = 1;
+	changing_tabs(tab, &argc);
 	while (tab->i <= argc - 1)
 	{
 		min = INT_MAX;

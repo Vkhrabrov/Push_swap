@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkhrabro <vkhrabro@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:25:06 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/02/09 18:13:34 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:52:23 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<unistd.h>
+#include <unistd.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {

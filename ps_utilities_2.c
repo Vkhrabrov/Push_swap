@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:28:25 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/10 22:58:19 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:45:49 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,15 @@ int	distance_to_biggest(t_list **stack, t_ps *tab)
 		tab->direction_b = 0;
 		return (bottom_distance);
 	}
+}
+
+void	changing_tabs(t_ps *tab, int *argc)
+{
+	if (tab->t == 1)
+	{
+		argc++;
+		tab->i = 0;
+	}
+	else
+		tab->i = 1;
 }

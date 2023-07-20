@@ -6,13 +6,13 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 22:19:16 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/10 23:49:41 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:52:32 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include <stdio.h>
 #include "libft.h"
-#include<stdlib.h>
+#include <stdlib.h>
 
 char	**ft_split(char const *s, char c);
 

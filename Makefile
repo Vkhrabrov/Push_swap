@@ -6,7 +6,7 @@
 #    By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:35:04 by vkhrabro          #+#    #+#              #
-#    Updated: 2023/07/11 00:28:06 by vkhrabro         ###   ########.fr        #
+#    Updated: 2023/07/20 23:52:18 by vkhrabro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ HEADER = push_swap.h
 LIBS = libft/
 MAKE = make
 
-SRC_F:= push_swap ps_utilities ps_utilities_2 ps_utilities_3 ps_commands ps_commands_2 algo algo_2 
+SRC_F:= push_swap ps_utilities ps_utilities_2 ps_utilities_3 ps_utilities_4 ps_commands ps_commands_2 algo algo_2 
 
 FLAGS = -Wall -Wextra -Werror -g -MMD
 RM = rm -f

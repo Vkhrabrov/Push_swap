@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:59:00 by vkhrabro          #+#    #+#             */
-/*   Updated: 2023/07/10 23:37:29 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2023/07/21 00:37:55 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	initialize_tab(t_ps *tab)
 	tab->i = 0;
 	tab->b = 0;
 	tab->k = 0;
+	tab->t = 0;
 	tab->position = 0;
 	tab->direction_a = 0;
 	tab->direction_b = 0;
@@ -53,60 +54,36 @@ int	main(int argc, char **argv)
 	t_ps	*tab;
 	t_list	*stack_a;
 	t_list	*stack_b;
+	char	**argv_add;
 
-	if (argc == 2)
-		exit(error_msg("Error", 1));
+	argv_add = NULL;
 	tab = (t_ps *)malloc(sizeof(t_ps));
 	if (!tab)
 		return (1);
 	initialize_tab(tab);
-	if (input_check(tab, argc, argv) == 1)
-	{
-		free(tab);
-		exit(error_msg("Error", 1));
-	}
+	process_input(tab, &argc, &argv, argv_add); 
 	initialize_list(&stack_a);
 	initialize_list(&stack_b);
 	filling_stack_a(tab, &stack_a, argc, argv);
 	indexing(&stack_a, argc, tab);
-	node_count(tab, &stack_a, &stack_b);
+	if (if_sorted(&stack_a) == 1)
+		node_count(tab, &stack_a, &stack_b);
 	free(tab);
+	free_list(stack_a);
+	if (tab->t == 1)
+		free_array(argv, tab);
 	return (0);
 }
 
 int	input_check(t_ps *tab, int argc, char **argv)
 {
-	tab->i = 1;
+	if (tab->t == 1)
+		tab->i = 0;
+	else 
+		tab->i = 1;
 	while (tab->i < argc)
 	{
-		tab->k = 0;
-		if (argv[tab->i][tab->k] == '-' || argv[tab->i][tab->k] == '+')
-			tab->k++;
-		while (argv[tab->i][tab->k])
-		{
-			if (!ft_isdigit(argv[tab->i][tab->k]))
-			{
-				free(tab);
-				exit(error_msg("Error", 1));
-			}
-			tab->k++;
-		}
-		tab->b = ft_atoi(argv[tab->i]);
-		if (tab->b > INT_MAX || tab->b < INT_MIN)
-		{
-			free(tab);
-			exit(error_msg("Error", 1));
-		}
-		tab->k = tab->i + 1;
-		while (tab->k < argc)
-		{
-			if (tab->b == ft_atoi(argv[tab->k]))
-			{
-				free(tab);
-				exit(error_msg("Error", 1));
-			}
-			tab->k++;
-		}
+		check_input(tab, argc, argv, tab->i);
 		tab->i++;
 	}
 	return (0);
